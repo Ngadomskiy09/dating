@@ -1,0 +1,49 @@
+.all {
+    border-style: solid;
+    border-color: black;
+    margin: 40px 75px;
+}
+
+.content {
+    float: left;
+    width: 45%
+}
+
+.image {
+    float: right;
+    width: 45%;
+}
+
+img {
+    border-radius: 20px;
+    width: 100%;
+    height: auto;
+    margin-top: 40px;
+}
+
+ul {
+    list-style-type: none;
+    background-color: lightgray;
+}
+
+li {
+    display: inline;
+}
+
+h1 {
+    padding-top: 40px;
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+.quotes {
+    border-style: solid;
+    border-color: lightgray;
+    font-style: italic;
+    padding-left: 3em;
+    padding-right: 3em;
+}
+
