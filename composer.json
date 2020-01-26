@@ -1,0 +1,12 @@
+{
+  "name" : "ngadomskiy/IT328/dating",
+  "authors" : [
+    {
+      "name" : "Nick Gadomskiy",
+      "email" : "ngadomskiy@greenriver.edu"
+    }
+  ],
+  "require" : {
+    "bcosca/fatfree-core" : "dev-master"
+  }
+}
