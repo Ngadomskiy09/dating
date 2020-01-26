@@ -1,30 +1,47 @@
 <include href="views/Dating.html">
-    <body>
+
     <ul>
         <li>
             <a href="home.html">My Dating Website</a>
         </li>
     </ul>
+    <body>
+        <div class="container">
+            <span class="border border-dark rounded">
+            <h1 id="personalH1">Personal Information</h1>
+            <hr>
+            <form id="form1" action="profile" method="post">
+                <div class="form-group">
+                    <label for="fname"><strong>First Name: </strong></label><br>
+                    <input id="fname" type="text" class="form-control" name="fname"><br>
 
-    <h1>Personal Information</h1>
-    <form id="form1" action="profile" method="post">
-        <label for="fname">First Name: <br></label>
-        <input id="fname" type="text" name="fname"><br>
+                    <label for="lname"><strong>Last Name: </strong></label><br>
+                    <input id="lname" type="text" class="form-control" name="lname"><br>
 
-        <label for="lname">Last Name: <br></label>
-        <input id="lname" type="text" name="lname"><br>
+                    <label for="age"><strong>Age: </strong></label><br>
+                    <input id="age" type="text" class="form-control" name="age"><br>
 
-        <label for="age">Age: <br></label>
-        <input id="age" type="text" name="age"><br>
+                    <label><strong>Gender: </strong></label><br>
+                    <input type="radio" name="gender" value="Male">Male
+                    <input type="radio" name="gender" value="Female">Female<br>
 
-        <input type="radio" name="gender" value="Male">Male
-        <input type="radio" name="gender" value="Female">Female<br>
+                    <label for="phone"><strong>Phone Number: </strong></label><br>
+                    <input id="phone" type="text" class="form-control" name="phone"><br>
+                </div>
 
-        <label for="phone">Phone Number: <br></label>
-        <input id="phone" type="text" name="phone"><br>
+                <div class="note">
+                    <p><strong>Note:</strong> All information entered is protected by our
+                        <a href="">privacy policy</a>. Profile information can only be viewed by others with
+                    your permission.</p>
 
-        <button type="submit">Next ></button>
-    </form>
+                </div>
 
+                <div class="btn-bottom">
+                    <button type="submit" class="btn btn-primary">Next ></button>
+                </div>
+
+            </form>
+            </span>
+        </div>
     </body>
     </html>

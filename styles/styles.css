@@ -58,3 +58,39 @@ hr {
     border-width: 1px;
     border-color: lightgray;
 }
+
+.note {
+    float: right;
+    width: 30%;
+    background-color: lightgray;
+    margin-right: 30px;
+    border-style: solid;
+    border-color: gray;
+    border-radius: 5px;
+    margin-top: 30px;
+}
+
+.form-group {
+    float: left;
+    width: 55%;
+    margin-left: 30px;
+    text-align: left;
+}
+
+span {
+    display: inline-block;
+    width: 90%;
+    height: auto;
+    margin: 20px;
+    background-color: white;
+}
+
+hr {
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+#personalH1 {
+    text-align: left;
+    padding-left: 30px;
+}
