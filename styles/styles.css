@@ -75,7 +75,14 @@ hr {
 
 .form-group {
     float: left;
-    width: 55%;
+    width: 45%;
+    margin-left: 30px;
+    text-align: left;
+}
+
+#profile {
+    float: left;
+    width: 45%;
     margin-left: 30px;
     text-align: left;
 }
@@ -93,7 +100,7 @@ hr {
     margin-left: 30px;
 }
 
-#personalH1, #profileH1{
+#personalH1, #profileH1, #interestsH1{
     text-align: left;
     padding-left: 30px;
 }
@@ -112,7 +119,23 @@ hr {
     bottom: -160px;
 }
 
-.text {
+.btn1 {
     float: right;
-    width: 70%;
+    width: 40%;
+    margin-right: 30px;
+}
+
+#next1 {
+    margin-bottom: 20px;
+}
+
+#next2 {
+    position: relative;
+    right: 0;
+    bottom: 20px;
+}
+
+h3 {
+    text-align: left;
+    padding-left: 30px;
 }
