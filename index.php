@@ -53,6 +53,14 @@ $f3->route('POST /interests', function() {
 
 // Define a results summary route
 $f3->route('POST /summary', function() {
+    if(isset($_POST['submit'])){
+        if(!empty($_POST['check_list'])){
+            foreach($_POST['check_list'] as $selected) {
+                echo $hobbies = $selected;
+            }
+        }
+    }
+    $_SESSION['form3a'] = $_POST['check_list'];
     $views = new Template();
     echo $views->render("views/summary.html");
 });
