@@ -4,18 +4,7 @@ Nick Gadomskiy
 Dating profile assignment
 -->
 
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="../styles/styles.css">
-
-    <title>Dating</title>
-</head>
+<include href="views/Dating.html">
 <body>
 
 <ul>
@@ -23,11 +12,9 @@ Dating profile assignment
         <a href="home.html">My Dating Website</a>
     </li>
 </ul>
-
-
 <div class="all">
     <div class="image">
-        <img src="../images/Online-Dating1.jpg" alt="dating image">
+        <img src="images/Online-Dating1.jpg" alt="dating image">
     </div>
 
     <div class="content">
@@ -49,9 +36,9 @@ Dating profile assignment
         </div>
         <hr>
 
-        <div class="button">
-            <button type="button" class="btn btn-primary">Create a Profile!</button>
-        </div>
+        <form action="personal" method="get">
+            <a href="personal"><button type="submit" class="btn btn-primary">Create a Profile!</button></a>
+        </form>
     </div>
 </div>
 
