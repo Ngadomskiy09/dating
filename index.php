@@ -14,9 +14,12 @@ error_reporting(E_ALL);
 
 // Require the autoload file
 require('vendor/autoload.php');
+require('models/validate.php');
 
 // Create an instance of the Base class
 $f3 = Base::instance();
+
+$f3->set('genders', array('Male', 'Female'));
 
 // Define a default route
 $f3->route('GET /', function() {
@@ -25,13 +28,41 @@ $f3->route('GET /', function() {
 });
 
 // Define a Personal Info route
-$f3->route('GET /personal', function() {
+$f3->route('GET|POST /personal', function($f3) {
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+        // Get Data from form
+        $fname = $_POST['fname'];
+        $lname = $_POST['lname'];
+        $age = $_POST['age'];
+        $gender = $_POST['gender'];
+
+        // Add data to hive
+        $f3->set('fname', $fname);
+        $f3->set('lname', $lname);
+        $f3->set('age', $age);
+        $f3->set('gender', $gender);
+
+        if (validPersonal()) {
+            // Write data to session
+            $_SESSION['fname'] = $fname;
+            $_SESSION['lname'] = $lname;
+            $_SESSION['age'] = $age;
+            $_SESSION['gender'] = $gender;
+
+            //Redirect to profile.html
+            $f3->reroute('/profile');
+        }
+
+    }
+
     $views = new Template();
     echo $views->render("views/personal_information.html");
 });
 
 // Define a Profile route
-$f3->route('POST /profile', function() {
+$f3->route('GET|POST /profile', function() {
     $_SESSION['form1a'] = $_POST['fname'];
     $_SESSION['form1b'] = $_POST['lname'];
     $_SESSION['form1c'] = $_POST['age'];

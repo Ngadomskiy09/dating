@@ -11,20 +11,41 @@ Dating profile assignment
             <span class="border border-dark rounded">
             <h1 id="personalH1">Personal Information</h1>
             <hr class="short">
-            <form id="form1" action="profile" method="post">
+            <form id="form1" method="post" action="#">
                 <div class="form-group">
-                    <label for="fname"><strong>First Name: </strong></label><br>
-                    <input id="fname" type="text" class="form-control" name="fname"><br>
+                    <label for="fname"><strong>First Name: </strong>
+                        <input id="fname" type="text" class="form-control" name="fname" value="{{ @fname}}"><br>
+                    </label>
+                    <check if="{{ @errors['fname'] }}">
+                        <span class="err">{{ @errors['fname'] }}</span>
+                    </check>
 
-                    <label for="lname"><strong>Last Name: </strong></label><br>
-                    <input id="lname" type="text" class="form-control" name="lname"><br>
+                    <label for="lname"><strong>Last Name: </strong>
+                        <input id="lname" type="text" class="form-control" name="lname" value="{{ @lname}}"><br>
+                    </label>
+                    <check if="{{ @errors['lname'] }}">
+                        <span class="err">{{ @errors['lname'] }}</span>
+                    </check>
 
-                    <label for="age"><strong>Age: </strong></label><br>
-                    <input id="age" type="text" class="form-control" name="age"><br>
+                    <label for="age"><strong>Age: </strong>
+                        <input id="age" type="text" class="form-control" name="age" value="{{ @age }}"><br>
+                    </label>
+                    <check if="{{ @errors['age'] }}">
+                        <span class="err">{{ @errors['age'] }}</span>
+                    </check>
 
                     <label><strong>Gender: </strong></label><br>
-                    <input type="radio" name="gender" value="Male">Male
-                    <input type="radio" name="gender" value="Female">Female<br>
+                    <repeat group="{{ @genders }}" value="{{ @genderOption }}">
+                        <label><input type="radio" name="gender" value="{{ @genderOption }}"
+                                <check if ="{{ @gender == @genderOption }}">
+                                    checked = "checked"
+                                </check>
+                            >{{ @genderOption }}
+                        </label>
+                    </repeat><br>
+                    <check if ="{{ @errors['gender'] }}">
+                        <span class="err">{{ @errors['gender'] }}</span>
+                    </check><br>
 
                     <label for="phone"><strong>Phone Number: </strong></label><br>
                     <input id="phone" type="text" class="form-control" name="phone"><br>
@@ -38,7 +59,7 @@ Dating profile assignment
                     </div>
 
                     <div class="btn-bottom">
-                        <button type="submit" class="btn btn-primary" id="next">Next ></button>
+                        <button type="submit" class="btn btn-primary" value="next" id="next">Next ></button>
                     </div>
                 </div>
 
