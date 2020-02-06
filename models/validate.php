@@ -31,6 +31,12 @@ function validPersonal()
         $f3->set("errors['gender']", "Please choose a gender");
     }
 
+    if(!validPhone($f3->get('phone')))
+    {
+        $isValid = false;
+        $f3->set("errors['phone']", "Please enter your phone number");
+    }
+
     return $isValid;
 }
 
@@ -53,4 +59,9 @@ function validGender($gender)
 {
     global $f3;
     return in_array($gender, $f3->get('genders'));
+}
+
+function validPhone($phone)
+{
+    return !empty($phone) && ctype_digit($phone) && $phone >= 1000000000;
 }

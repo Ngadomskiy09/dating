@@ -33,8 +33,9 @@ Dating profile assignment
                     <check if="{{ @errors['age'] }}">
                         <span class="err">{{ @errors['age'] }}</span>
                     </check>
+                    <br>
 
-                    <label><strong>Gender: </strong></label><br>
+                    <label class="text-left"><strong>Gender: </strong></label><br>
                     <repeat group="{{ @genders }}" value="{{ @genderOption }}">
                         <label><input type="radio" name="gender" value="{{ @genderOption }}"
                                 <check if ="{{ @gender == @genderOption }}">
@@ -47,8 +48,13 @@ Dating profile assignment
                         <span class="err">{{ @errors['gender'] }}</span>
                     </check><br>
 
-                    <label for="phone"><strong>Phone Number: </strong></label><br>
-                    <input id="phone" type="text" class="form-control" name="phone"><br>
+                    <label for="phone"><strong>Phone Number: </strong>
+                        <input id="phone" type="text" class="form-control" name="phone" value="{{ @phone}}"><br>
+                    </label><br>
+                    <check if="{{ @errors['phone'] }}">
+                        <span class="err">{{ @errors['phone'] }}</span>
+                    </check>
+                    <br>
                 </div>
 
                 <div class="btn">

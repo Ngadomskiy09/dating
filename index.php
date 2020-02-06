@@ -37,12 +37,14 @@ $f3->route('GET|POST /personal', function($f3) {
         $lname = $_POST['lname'];
         $age = $_POST['age'];
         $gender = $_POST['gender'];
+        $phone = $_POST['phone'];
 
         // Add data to hive
         $f3->set('fname', $fname);
         $f3->set('lname', $lname);
         $f3->set('age', $age);
         $f3->set('gender', $gender);
+        $f3->set('phone', $phone);
 
         if (validPersonal()) {
             // Write data to session
@@ -50,6 +52,7 @@ $f3->route('GET|POST /personal', function($f3) {
             $_SESSION['lname'] = $lname;
             $_SESSION['age'] = $age;
             $_SESSION['gender'] = $gender;
+            $_SESSION['phone'] = $phone;
 
             //Redirect to profile.html
             $f3->reroute('/profile');
