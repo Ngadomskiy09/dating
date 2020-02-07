@@ -20,6 +20,8 @@ require('models/validate.php');
 $f3 = Base::instance();
 
 $f3->set('genders', array('Male', 'Female'));
+$f3->set('states', array('AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY', 'LA', 'MA', 'MD', 'ME', 'MI', 'MN', 'MO', 'MS', 'MT', 'NC', 'ND', 'NE', 'NH', 'NJ', 'NM', 'NV', 'NY', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VA', 'VT', 'WA', 'WI', 'WV', 'WY'));
+$f3->set('seek', array('Male', 'Female'));
 
 // Define a default route
 $f3->route('GET /', function() {
@@ -65,18 +67,41 @@ $f3->route('GET|POST /personal', function($f3) {
 });
 
 // Define a Profile route
-$f3->route('GET|POST /profile', function() {
-    $_SESSION['form1a'] = $_POST['fname'];
+$f3->route('GET|POST /profile', function($f3) {
+    /*$_SESSION['form1a'] = $_POST['fname'];
     $_SESSION['form1b'] = $_POST['lname'];
     $_SESSION['form1c'] = $_POST['age'];
     $_SESSION['form1d'] = $_POST['gender'];
-    $_SESSION['form1e'] = $_POST['phone'];
+    $_SESSION['form1e'] = $_POST['phone'];*/
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $email = $_POST['email'];
+        $state = $_POST['state'];
+        $seeking = $_POST['seeking'];
+        //$bio = $_POST['bio'];
+
+        $f3->set('email', $email);
+        $f3->set('location', $state);
+        $f3->set('seeking', $seeking);
+        //$f3->set('bio', $bio);
+
+        if(validProfile()) {
+            $_SESSION['email'] = $email;
+            $_SESSION['location'] = $state;
+            $_SESSION['seeking'] = $seeking;
+            //$_SESSION['bio'] = $bio;
+
+
+            //Redirect to profile.html
+            $f3->reroute('/interests');
+        }
+    }
     $views = new Template();
     echo $views->render("views/profile.html");
 });
 
 // Define a Interests route
-$f3->route('POST /interests', function() {
+$f3->route('GET|POST /interests', function() {
     $_SESSION['form2a'] = $_POST['email'];
     $_SESSION['form2b'] = $_POST['state'];
     $_SESSION['form2c'] = $_POST['seeking'];
