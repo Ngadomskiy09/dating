@@ -50,21 +50,27 @@ function validProfile() {
         $f3->set("errors['email']", "Please enter a valid email format");
     }
 
-    if(!validState($f3->get('state')))
-    {
-        $isValid = false;
-        $f3->set("errors['state']", "Please select a state");
-    }
-
     if (!validSeeking($f3->get('seeking'))) {
         $isValid = false;
         $f3->set("errors['seeking']", "Please choose what gender you are seeking");
     }
 
-    /*if(!validBio($f3->get('bio'))) {
+    return $isValid;
+}
+
+function validInterests() {
+    global $f3;
+    $isValid = true;
+
+    if(!validIndoor($f3->get('indoorSelected'))) {
         $isValid = false;
-        $f3->set("errors['bio']", "Please fill out the biography");
-    }*/
+        $f3->set("errors['indoorSelected']", "Please choose at least one indoor activity");
+    }
+
+    if(!validOutdoor($f3->get('outdoorSelected'))) {
+        $isValid = false;
+        $f3->set("errors['outdoorSelected']", "Please choose at least one outdoor activity");
+    }
 
     return $isValid;
 }
@@ -97,13 +103,7 @@ function validPhone($phone)
 
 function validEmail($email)
 {
-    return !empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL);
-}
-
-function validState($state)
-{
-    global $f3;
-    return in_array($state, $f3->get('states'));
+    return !empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL);
 }
 
 function validSeeking($seeking)
@@ -112,7 +112,14 @@ function validSeeking($seeking)
     return in_array($seeking, $f3->get('seek'));
 }
 
-/*function validBio($bio)
+function validIndoor($indoorSelected)
 {
-    return !empty($bio) && ctype_alpha($bio);
-}*/
+    global $f3;
+    return true;
+}
+
+function validOutdoor($outdoorSelected)
+{
+    global $f3;
+    return true;
+}

@@ -10,27 +10,27 @@ Dating profile assignment
             <span class="border border-dark rounded">
                 <div class="container" id="summary">
                     <span class="border border-dark rounded">
-                    <p>Name: {{ @SESSION.form1a }} {{ @SESSION.form1b }}</p>
+                    <p>Name: {{ @SESSION.fname }} {{ @SESSION.lname }}</p>
                     <hr>
-                    <p>Gender: {{ @SESSION.form1d }}</p>
+                    <p>Gender: {{ @SESSION.gender }}</p>
                     <hr>
-                    <p>Age: {{ @SESSION.form1c }}</p>
+                    <p>Age: {{ @SESSION.age }}</p>
                     <hr>
-                    <p>Phone: {{ @SESSION.form1e }}</p>
+                    <p>Phone: {{ @SESSION.phone }}</p>
                     <hr>
-                    <p>Email: {{ @SESSION.form2a }}</p>
+                    <p>Email: {{ @SESSION.email }}</p>
                     <hr>
-                    <p>State: {{ @SESSION.form2b }}</p>
+                    <p>State: {{ @SESSION.location }}</p>
                     <hr>
-                    <p>Seeking: {{ @SESSION.form2c }}</p>
+                    <p>Seeking: {{ @SESSION.seeking }}</p>
                     <hr>
-                    <p>Interests: {{ @SESSION.form3a }}</p>
+                    <p>Interests: {{ implode(", ", @SESSION.indoor) }}, {{ implode(", ", @SESSION.outdoor) }}</p>
                     </span>
                 </div>
                 <div class="bio">
                     <img src="images/icon.jpg"  id="icon" alt="icon">
                     <h2>Biography</h2>
-                    <p>{{ @SESSION.form2d }}</p>
+                    <p>{{ @SESSION.bio }}</p>
                     <div class="contact">
                         <button type="submit" class="btn btn-primary" id="contact">Contact Me!</button>
                     </div>

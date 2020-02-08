@@ -10,78 +10,40 @@ Dating profile assignment
         <span class="border border-dark rounded">
             <h1 id="interestsH1"><strong>Interests</strong></h1>
             <hr class="short">
-            <form id="form3" action="summary" method="post">
+            <form id="form3" action="#" method="post">
+
                 <h3><strong>In-door Interests</strong></h3>
-                <div class="align1">
-                <div class="form-check form-check-inline"><br>
-                    <input type="checkbox" name="check_list[]" class="form-check-input" id="tv" value="tv">
-                    <label class="form-check-label" for="tv">tv</label>
-                </div>
-                <div class="form-check form-check-inline"><br>
-                    <input type="checkbox" name="check_list[]" class="form-check-input" id="movies" value="movies">
-                    <label class="form-check-label" for="movies">movies</label>
-                </div>
-                <div class="form-check form-check-inline"><br>
-                    <input type="checkbox" name="check_list[]" class="form-check-input" id="cooking" value="cooking">
-                    <label class="form-check-label" for="cooking">cooking</label>
-                </div>
-                <div class="form-check form-check-inline"><br>
-                    <input type="checkbox" name="check_list[]" class="form-check-input" id="board games" value="board games">
-                    <label class="form-check-label" for="board games">board games</label>
-                </div>
+                <check if="{{ @errors['indoorSelected'] }}">
+                    <span class="err">{{ @errors['indoorSelected'] }}</span>
+                </check>
+                <div class="align">
+                    <repeat group="{{ @indoor }}" value="{{ @indoorOption }}">
+                        <label><input type="checkbox" name="indoor[]" value="{{ @indoorOption}}"
+                            <check if="{{ isset(@indoorSelected) && in_array(@indoorOption, @indoorSelected) }}">
+                                checked = "checked"
+                            </check>
+                            >{{ @indoorOption }}
+                        </label>
+                    </repeat>
+                    <br>
                 </div>
                 <br>
 
-                <div class="align2">
-                <div class="form-check form-check-inline"><br>
-                    <input type="checkbox" name="check_list[]" class="form-check-input" id="puzzles" value="puzzles">
-                    <label class="form-check-label" for="puzzles">puzzles</label>
-                </div>
-                <div class="form-check form-check-inline"><br>
-                    <input type="checkbox" name="check_list[]" class="form-check-input" id="reading" value="reading">
-                    <label class="form-check-label" for="reading">reading</label>
-                </div>
-                <div class="form-check form-check-inline"><br>
-                    <input type="checkbox" name="check_list[]" class="form-check-input" id="playing cards" value="playing cards">
-                    <label class="form-check-label" for="playing cards">playing cards</label>
-                </div>
-                <div class="form-check form-check-inline"><br>
-                    <input type="checkbox" name="check_list[]" class="form-check-input" id="video games" value="video games">
-                    <label class="form-check-label" for="video games">video games</label>
-                </div>
-                </div>
-
-                <br>
                 <h3><strong>Out-door Interests</strong></h3>
-                <div class="align3">
-                <div class="form-check form-check-inline"><br>
-                    <input type="checkbox" name="check_list[]" class="form-check-input" id="hiking" value="hiking">
-                    <label class="form-check-label" for="hiking">hiking</label>
-                </div>
-                <div class="form-check form-check-inline"><br>
-                    <input type="checkbox" name="check_list[]" class="form-check-input" id="biking" value="biking">
-                    <label class="form-check-label" for="biking">biking</label>
-                </div>
-                <div class="form-check form-check-inline"><br>
-                    <input type="checkbox" name="check_list[]" class="form-check-input" id="swimming" value="swimming">
-                    <label class="form-check-label" for="swimming">swimming</label>
-                </div>
-                <div class="form-check form-check-inline"><br>
-                    <input type="checkbox" name="check_list[]" class="form-check-input" id="collecting" value="collecting">
-                    <label class="form-check-label" for="collecting">collecting</label>
-                </div>
+                <check if="{{ @errors['outdoorSelected'] }}">
+                    <span class="err">{{ @errors['outdoorSelected'] }}</span>
+                </check>
+                <div class="align">
+                    <repeat group="{{ @outdoor }}" value="{{ @outdoorOption }}">
+                        <label><input type="checkbox" name="outdoor[]" value="{{ @outdoorOption}}"
+                            <check if="{{ isset(@outdoorSelected) && in_array(@outdoorOption, @outdoorSelected) }}">
+                                checked = "checked"
+                            </check>
+                                >{{ @outdoorOption }}
+                        </label>
+                    </repeat>
                 </div>
 
-                <div class="align4">
-                <div class="form-check form-check-inline">
-                    <input type="checkbox" name="check_list[]" class="form-check-input" id="walking" value="walking">
-                    <label class="form-check-label" for="walking">walking</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input type="checkbox" name="check_list[]" class="form-check-input" id="climbing" value="climbing">
-                    <label class="form-check-label" for="climbing">climbing</label>
-                </div>
-                </div>
 
                 <div class="btn-bottom">
                     <button type="submit" class="btn btn-primary" id="next2">Next ></button>

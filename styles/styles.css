@@ -167,9 +167,9 @@ h3 {
     bottom: 20px;
 }
 
-.align1 {
+.align {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding-left: 40px;
     padding-right: 40px;
     min-width: 15em;
@@ -183,13 +183,13 @@ h3 {
     min-width: 15em;
 }
 
-.align3 {
+/*.align3 {
     display: flex;
     justify-content: space-between;
     padding-left: 40px;
     padding-right: 40px;
     min-width: 15em;
-}
+}*/
 
 .align4 {
     display: flex;

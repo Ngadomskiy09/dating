@@ -13,11 +13,12 @@ Dating profile assignment
             <form id="form2" action="#" method="post">
                 <div class="form-group" id="profile">
                     <label for="email"><strong>Email: </strong>
-                        <input id="email" type="text" class="form-control" name="email" value="{{ @email}}"><br>
+                        <input id="email" type="text" class="form-control" name="email" value="{{ @email}}">
                     </label>
                     <check if="{{ @errors['email'] }}">
                         <span class="err">{{ @errors['email'] }}</span>
-                    </check><br>
+                    </check>
+                    <br>
 
                     <label><strong>State:</strong>
                         <select name="state">
@@ -29,9 +30,10 @@ Dating profile assignment
                                 >{{ @state }}
                             </repeat>
                         </select>
-                    </label><br>
+                    </label>
+                    <br>
 
-                    <label class="text-left"><strong>Gender: </strong></label><br>
+                    <label class="text-left"><strong>Seeking: </strong></label><br>
                     <repeat group="{{ @seek }}" value="{{ @seekingOption }}">
                         <label><input type="radio" name="seeking" value="{{ @seekingOption }}"
                                 <check if ="{{ @seeking == @seekingOption }}">
@@ -39,25 +41,18 @@ Dating profile assignment
                                 </check>
                             >{{ @seekingOption }}
                         </label>
-                    </repeat><br>
+                    </repeat>
                     <check if ="{{ @errors['seeking'] }}">
                         <span class="err">{{ @errors['seeking'] }}</span>
-                    </check><br>
+                    </check>
                 </div>
 
                 <div class="btn1">
                     <div class="form-group">
-                        <label for="biography"><strong>Biography</strong><br></label>
-                        <textarea id="biography" class="form-control" rows="4" name="biography"></textarea>
+                        <label for="bio"><strong>Biography</strong><br></label>
+                        <textarea id="bio" class="form-control" rows="4" name="bio"></textarea>
                     </div>
-                    <!--<div>
-                        <label><strong>Biography</strong><br>
-                            <textarea name="bio"></textarea>
-                        </label>
-                        <check if="{{ @errors['bio'] }}">
-                            <span class="err">{{ @errors['bio'] }}</span>
-                        </check><br><br>
-                    </div>-->
+                    <br>
 
                     <div class="btn-bottom">
                         <button type="submit" class="btn btn-primary" id="next1">Next ></button>

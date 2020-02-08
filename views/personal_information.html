@@ -14,21 +14,21 @@ Dating profile assignment
             <form id="form1" method="post" action="#">
                 <div class="form-group">
                     <label for="fname"><strong>First Name: </strong>
-                        <input id="fname" type="text" class="form-control" name="fname" value="{{ @fname}}"><br>
+                        <input id="fname" type="text" class="form-control" name="fname" value="{{ @fname}}">
                     </label>
                     <check if="{{ @errors['fname'] }}">
                         <span class="err">{{ @errors['fname'] }}</span>
                     </check>
 
                     <label for="lname"><strong>Last Name: </strong>
-                        <input id="lname" type="text" class="form-control" name="lname" value="{{ @lname}}"><br>
+                        <input id="lname" type="text" class="form-control" name="lname" value="{{ @lname}}">
                     </label>
                     <check if="{{ @errors['lname'] }}">
                         <span class="err">{{ @errors['lname'] }}</span>
                     </check>
 
                     <label for="age"><strong>Age: </strong>
-                        <input id="age" type="text" class="form-control" name="age" value="{{ @age }}"><br>
+                        <input id="age" type="text" class="form-control" name="age" value="{{ @age }}">
                     </label>
                     <check if="{{ @errors['age'] }}">
                         <span class="err">{{ @errors['age'] }}</span>
@@ -49,12 +49,11 @@ Dating profile assignment
                     </check><br>
 
                     <label for="phone"><strong>Phone Number: </strong>
-                        <input id="phone" type="text" class="form-control" name="phone" value="{{ @phone}}"><br>
-                    </label><br>
+                        <input id="phone" type="text" class="form-control" name="phone" value="{{ @phone}}">
+                    </label>
                     <check if="{{ @errors['phone'] }}">
                         <span class="err">{{ @errors['phone'] }}</span>
                     </check>
-                    <br>
                 </div>
 
                 <div class="btn">
