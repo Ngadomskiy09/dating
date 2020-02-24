@@ -6,8 +6,6 @@
  * Dating profile assignment
  */
 
-session_start();
-
 // Turn on error reporting
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
@@ -15,6 +13,8 @@ error_reporting(E_ALL);
 // Require the autoload file
 require('vendor/autoload.php');
 require('models/validate.php');
+
+session_start();
 
 // Create an instance of the Base class
 $f3 = Base::instance();
@@ -25,115 +25,33 @@ $f3->set('seek', array('Male', 'Female'));
 $f3->set('indoor', array('tv', 'movies', 'cooking', 'board games', 'puzzles', 'reading', 'playing cards', 'video games'));
 $f3->set('outdoor', array('hiking', 'biking', 'swimming', 'collecting', 'walking', 'climbing'));
 
+$controller = new Routes($f3);
+$f3->set('DEBUG', 3);
+
 // Define a default route
 $f3->route('GET /', function() {
-    $views = new Template();
-    echo $views->render("views/home.html");
+    $GLOBALS['controller']->home();
 });
 
 // Define a Personal Info route
-$f3->route('GET|POST /personal', function($f3) {
-
-    if($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-        // Get Data from form
-        $fname = $_POST['fname'];
-        $lname = $_POST['lname'];
-        $age = $_POST['age'];
-        $gender = $_POST['gender'];
-        $phone = $_POST['phone'];
-
-        // Add data to hive
-        $f3->set('fname', $fname);
-        $f3->set('lname', $lname);
-        $f3->set('age', $age);
-        $f3->set('gender', $gender);
-        $f3->set('phone', $phone);
-
-        if (validPersonal()) {
-            // Write data to session
-            $_SESSION['fname'] = $fname;
-            $_SESSION['lname'] = $lname;
-            $_SESSION['age'] = $age;
-            $_SESSION['gender'] = $gender;
-            $_SESSION['phone'] = $phone;
-
-            //Redirect to profile.html
-            $f3->reroute('/profile');
-        }
-
-    }
-
-    $views = new Template();
-    echo $views->render("views/personal_information.html");
+$f3->route('GET|POST /personal', function() {
+    $GLOBALS['controller']->personalInfo();
 });
 
 // Define a Profile route
-$f3->route('GET|POST /profile', function($f3) {
-
-    if($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $email = $_POST['email'];
-        $state = $_POST['state'];
-        $seeking = $_POST['seeking'];
-        $bio = $_POST['bio'];
-
-        $f3->set('email', $email);
-        $f3->set('location', $state);
-        $f3->set('seeking', $seeking);
-        $f3->set('bio', $bio);
-
-        if(validProfile()) {
-            $_SESSION['email'] = $email;
-            $_SESSION['location'] = $state;
-            $_SESSION['seeking'] = $seeking;
-            $_SESSION['bio'] = $bio;
-
-
-            //Redirect to interests.html
-            $f3->reroute('/interests');
-        }
-    }
-    $views = new Template();
-    echo $views->render("views/profile.html");
+$f3->route('GET|POST /profile', function() {
+    $GLOBALS['controller']->profile();
 });
 
 // Define a Interests route
-$f3->route('GET|POST /interests', function($f3) {
-
-    $indoorSelected = array();
-    $outdoorSelected = array();
-
-    if($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-        if (!empty($_POST['indoor']))
-            $indoorSelected = $_POST['indoor'];
-
-        if (!empty($_POST['outdoor']))
-            $outdoorSelected = $_POST['outdoor'];
-
-        $f3->set('indoorSelected', $indoorSelected);
-        $f3->set('outdoorSelected', $outdoorSelected);
-
-        if (validInterests()) {
-            $_SESSION['indoor'] = $indoorSelected;
-            $_SESSION['outdoor'] = $outdoorSelected;
-
-            //Redirect to Summary
-            $f3->reroute('/summary');
-        }
-    }
-
-    $views = new Template();
-    echo $views->render("views/interests.html");
+$f3->route('GET|POST /interests', function() {
+    $GLOBALS['controller']->interests();
 });
 
 // Define a results summary route
 $f3->route('GET|POST /summary', function() {
-    
-    $views = new Template();
-    echo $views->render("views/summary.html");
+    $GLOBALS['controller']->summary();
 });
-
 
 
 // Run fat free

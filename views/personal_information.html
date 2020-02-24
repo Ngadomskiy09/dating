@@ -53,7 +53,12 @@ Dating profile assignment
                     </label>
                     <check if="{{ @errors['phone'] }}">
                         <span class="err">{{ @errors['phone'] }}</span>
-                    </check>
+                    </check><br>
+
+                    <label for="premium"><strong>Premium Membership</strong><br>
+                        <input id="premium" type="checkbox" name="premium" value="{{ @isPremium }}">
+                        <label for="premium">Sign me up for a Premium Account!</label>
+                    </label>
                 </div>
 
                 <div class="btn">
