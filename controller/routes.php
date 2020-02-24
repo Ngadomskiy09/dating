@@ -42,8 +42,8 @@ class Routes
                 $_SESSION['age'] = $age;
                 $_SESSION['gender'] = $gender;
                 $_SESSION['phone'] = $phone;
-                $_SESSION['premium'] = $premium;
-                if ($_POST['premium'] == "isPremium") {
+                $_SESSION['premium'] = $_POST["premium"];
+                if ($_POST['premium'] == "premium") {
                     $_SESSION['member'] = new PremiumMember($_POST['fname'], $_POST['lname'], $_POST['age'],
                     $_POST['gender'], $_POST['phone']);
                 } else {
@@ -56,7 +56,6 @@ class Routes
             }
 
         }
-
         $views = new Template();
         echo $views->render("views/personal_information.html");
     }
@@ -82,10 +81,10 @@ class Routes
 
 
                 //Redirect to interests.html if premium user is selected
-                if ($_POST['premium'] == "isPremium") {
-                    $this->_f3->reroute('/interests');
-                } else {
+                if ($_POST['premium'] == "is.Premium") {
                     $this->_f3->reroute('/summary');
+                } else {
+                    $this->_f3->reroute('/interests');
                 }
             }
         }
