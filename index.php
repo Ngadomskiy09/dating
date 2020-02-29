@@ -56,5 +56,16 @@ $f3->route('GET|POST /summary', function() {
     $GLOBALS['controller']->summary();
 });
 
+$f3->route('GET /view', function($f3) {
+    global $dbh;
+    $results = $dbh->getMembers();
+    foreach($results as $result) {
+        foreach($result as $item) {
+            echo "$item ";
+        }
+        echo "<br>";
+    }
+});
+
 // Run fat free
 $f3->run();
