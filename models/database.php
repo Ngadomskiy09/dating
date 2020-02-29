@@ -100,13 +100,13 @@ class Database
 
     function insertInterest($id, $intId)
     {
-        $sql = "INSERT INTO member_interest VALUE(:idMember, idInterest)";
+        $sql = "INSERT INTO member_interest VALUE(:idMember, :idInterest)";
 
         $statement = $this->_dbh->prepare($sql);
 
         $statement->bindParam(':idInterest', $intId);
         $statement->bindParam(':idMember', $id);
 
-
+        $statement->execute();
     }
 }
