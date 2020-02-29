@@ -2,15 +2,16 @@
 
 class Member
 {
-    private $fname;
-    private $lname;
-    private $age;
-    private $gender;
-    private $phone;
-    private $email;
-    private $state;
-    private $seeking;
-    private $bio;
+    private $_fname;
+    private $_lname;
+    private $_age;
+    private $_gender;
+    private $_phone;
+    private $_email;
+    private $_state;
+    private $_seeking;
+    private $_bio;
+
 
     function __construct($fname, $lname, $age, $gender, $phone)
     {
@@ -19,6 +20,36 @@ class Member
         $this->_age = $age;
         $this->_gender = $gender;
         $this->_phone = $phone;
+    }
+
+    public function getState()
+    {
+        return $this->_state;
+    }
+
+    public function setState($state)
+    {
+        $this->_state = $state;
+    }
+
+    public function getSeeking()
+    {
+        return $this->_seeking;
+    }
+
+    public function setSeeking($seeking)
+    {
+        $this->_seeking = $seeking;
+    }
+
+    public function getBio()
+    {
+        return $this->_bio;
+    }
+
+    public function setBio($bio)
+    {
+        $this->_bio = $bio;
     }
 
     function getFname()
@@ -69,6 +100,16 @@ class Member
     function setPhone($phone)
     {
         $this->_phone = $phone;
+    }
+
+    function getEmail()
+    {
+        return $this->_email;
+    }
+
+    function setEmail($email)
+    {
+        $this->_email = $email;
     }
 
 }

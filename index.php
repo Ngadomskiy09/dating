@@ -19,6 +19,8 @@ session_start();
 // Create an instance of the Base class
 $f3 = Base::instance();
 
+$dbh = new Database();
+
 $f3->set('genders', array('Male', 'Female'));
 $f3->set('states', array('AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY', 'LA', 'MA', 'MD', 'ME', 'MI', 'MN', 'MO', 'MS', 'MT', 'NC', 'ND', 'NE', 'NH', 'NJ', 'NM', 'NV', 'NY', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VA', 'VT', 'WA', 'WI', 'WV', 'WY'));
 $f3->set('seek', array('Male', 'Female'));
@@ -50,9 +52,9 @@ $f3->route('GET|POST /interests', function() {
 
 // Define a results summary route
 $f3->route('GET|POST /summary', function() {
+    $GLOBALS['dbh']->insertMember();
     $GLOBALS['controller']->summary();
 });
-
 
 // Run fat free
 $f3->run();

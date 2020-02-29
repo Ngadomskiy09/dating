@@ -2,8 +2,8 @@
 
 class PremiumMember extends Member
 {
-    private $inDoorInterests;
-    private $outDoorInterests;
+    private $_inDoorInterests;
+    private $_outDoorInterests;
 
     function getIndoor()
     {

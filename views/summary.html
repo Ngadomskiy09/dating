@@ -18,13 +18,13 @@ Dating profile assignment
                     <hr>
                     <p>Phone: {{ @SESSION.phone }}</p>
                     <hr>
-                    <p>Email: {{ @SESSION.email }}</p>
+                    <p>Email: {{ @SESSION.member->getEmail() }}</p>
                     <hr>
-                    <p>State: {{ @SESSION.location }}</p>
+                    <p>State: {{ @SESSION.member->getState() }}</p>
                     <hr>
-                    <p>Seeking: {{ @SESSION.seeking }}</p>
+                    <p>Seeking: {{ @SESSION.member->getSeeking() }}</p>
                     <hr>
-                    <p>Interests: {{ implode(", ", @SESSION.indoor) }}, {{ implode(", ", @SESSION.outdoor) }}</p>
+                    <p>Interests: {{ implode(", ", @SESSION.member->getIndoor()) }}, {{ implode(", ", @SESSION.member->getOutdoor()) }}</p>
                     </span>
                 </div>
                 <div class="bio">

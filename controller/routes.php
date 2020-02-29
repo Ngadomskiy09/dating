@@ -74,17 +74,17 @@ class Routes
             $this->_f3->set('bio', $bio);
 
             if(validProfile()) {
-                $_SESSION['email'] = $email;
-                $_SESSION['location'] = $state;
-                $_SESSION['seeking'] = $seeking;
-                $_SESSION['bio'] = $bio;
+                $_SESSION['member']->setEmail($email);
+                $_SESSION['member']->setState($state);
+                $_SESSION['member']->setSeeking($seeking);
+                $_SESSION['member']->setBio($bio);
 
 
                 //Redirect to interests.html if premium user is selected
-                if ($_POST['premium'] == "is.Premium") {
-                    $this->_f3->reroute('/summary');
-                } else {
+                if ($_SESSION['premium'] == "premium") {
                     $this->_f3->reroute('/interests');
+                } else {
+                    $this->_f3->reroute('/summary');
                 }
             }
         }
@@ -109,8 +109,8 @@ class Routes
             $this->_f3->set('outdoorSelected', $outdoorSelected);
 
             if (validInterests()) {
-                $_SESSION['indoor'] = $indoorSelected;
-                $_SESSION['outdoor'] = $outdoorSelected;
+                $_SESSION['member']->setIndoor($indoorSelected);
+                $_SESSION['member']->setOutdoor($outdoorSelected);
 
                 //Redirect to Summary
                 $this->_f3->reroute('/summary');
