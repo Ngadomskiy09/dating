@@ -125,7 +125,7 @@ class Routes
 
     function summary()
     {
-        $this->_db->insertMember();
+        $this->_dbh->insertMember();
         $views = new Template();
         echo $views->render("views/summary.html");
     }
