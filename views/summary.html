@@ -24,7 +24,9 @@ Dating profile assignment
                     <hr>
                     <p>Seeking: {{ @SESSION.member->getSeeking() }}</p>
                     <hr>
-                    <p>Interests: {{ implode(", ", @SESSION.member->getIndoor()) }}, {{ implode(", ", @SESSION.member->getOutdoor()) }}</p>
+                        <check if = "{{ @SESSION.premium }}">
+                            <p>Interests: {{ implode(", ", @SESSION.member->getIndoor()) }}, {{ implode(", ", @SESSION.member->getOutdoor()) }}</p>
+                        </check>
                     </span>
                 </div>
                 <div class="bio">

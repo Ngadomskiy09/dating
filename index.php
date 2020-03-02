@@ -27,44 +27,39 @@ $f3->set('seek', array('Male', 'Female'));
 $f3->set('indoor', array('tv', 'movies', 'cooking', 'board games', 'puzzles', 'reading', 'playing cards', 'video games'));
 $f3->set('outdoor', array('hiking', 'biking', 'swimming', 'collecting', 'walking', 'climbing'));
 
-$controller = new Routes($f3);
+$routes = new Routes($f3);
 $f3->set('DEBUG', 3);
 
 // Define a default route
 $f3->route('GET /', function() {
-    $GLOBALS['controller']->home();
+    //$_SESSION = array();
+    $GLOBALS['routes']->home();
 });
 
 // Define a Personal Info route
 $f3->route('GET|POST /personal', function() {
-    $GLOBALS['controller']->personalInfo();
+    $_SESSION = array();
+    $GLOBALS['routes']->personalInfo();
 });
 
 // Define a Profile route
 $f3->route('GET|POST /profile', function() {
-    $GLOBALS['controller']->profile();
+    $GLOBALS['routes']->profile();
 });
 
 // Define a Interests route
 $f3->route('GET|POST /interests', function() {
-    $GLOBALS['controller']->interests();
+    $GLOBALS['routes']->interests();
 });
 
 // Define a results summary route
 $f3->route('GET|POST /summary', function() {
-    $GLOBALS['dbh']->insertMember();
-    $GLOBALS['controller']->summary();
+    //$GLOBALS['dbh']->insertMember();
+    $GLOBALS['routes']->summary();
 });
 
-$f3->route('GET /view', function($f3) {
-    global $dbh;
-    $results = $dbh->getMembers();
-    foreach($results as $result) {
-        foreach($result as $item) {
-            echo "$item ";
-        }
-        echo "<br>";
-    }
+$f3->route('GET /admin', function() {
+    $GLOBALS['routes']->admin();
 });
 
 // Run fat free

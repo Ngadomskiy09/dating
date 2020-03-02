@@ -3,10 +3,12 @@
 class Routes
 {
     private $_f3;
+    private $_dbh;
 
     function __construct($f3)
     {
         $this->_f3 = $f3;
+        $this->_dbh = new Database();
     }
 
     function home()
@@ -123,8 +125,18 @@ class Routes
 
     function summary()
     {
+        $this->_db->insertMember();
         $views = new Template();
         echo $views->render("views/summary.html");
+    }
+
+    function admin()
+    {
+        $this->_f3->set('memberInfo', $this->_dbh->getMembers());
+        $this->_f3->set('interests', new interest($this->_f3, $this->_dbh));
+
+        $views = new Template();
+        echo $views->render("views/admin.html");
     }
 
 }

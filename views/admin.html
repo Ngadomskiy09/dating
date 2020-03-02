@@ -1,0 +1,81 @@
+
+<include href="views/Dating.html">
+
+    <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css">
+    <!--<link rel="stylesheet" href="./styles/databaseStyles.css">-->
+
+    <body>
+        <div class="container">
+            <h3>Dating Database</h3>
+
+            <table id="memberData" class="display">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>age</th>
+                        <th>gender</th>
+                        <th>phone</th>
+                        <th>E-mail</th>
+                        <th>state</th>
+                        <th>seeking</th>
+                        <th>bio</th>
+                        <th>Premium</th>
+                        <th>Interests</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <repeat group="{{ @memberInfo }}" value="{{ @member }}">
+                        <th>{{ @member['member_id'] }}</th>
+                        <th>{{ @member['fname'] }} {{ @member['lname'] }}</th>
+                        <th>{{ @member['age'] }}</th>
+                        <th>{{ @member['gender'] }}</th>
+                        <th>{{ @member['phone'] }}</th>
+                        <th>{{ @member['email'] }}</th>
+                        <th>{{ @member['state'] }}</th>
+                        <th>{{ @member['seeking'] }}</th>
+                        <th>{{ @member['bio'] }}</th>
+                        <th><input type="checkbox"
+                            <check if="{{ @member['premium'] == 1 }}">
+                                checked
+                            </check>
+                        </th>
+                        <th>{{ @interests->viewAll( @member['member_id']) }}</th>
+                    </repeat>
+                </tbody>
+            </table>
+
+
+        </div>
+
+        <script src="//code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="//stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+        <!--<script src="//cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>-->
+        <script>
+
+            $('#memberData').DataTable( {
+                responsive: {
+                    details: {
+                        display: $.fn.dataTable.Responsive.display.modal( {
+                            header: function ( row ) {
+                                var data = row.data();
+                                // return 'Details for '+data[0]+' '+data[1];
+                                return 'Details for '+data[0];
+                            }
+                        } ),
+                        renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
+                            tableClass: 'table'
+                        } )
+                    }
+                },
+                order: [[1]]
+            } );
+        </script>
+
+    </body>
+    </html>

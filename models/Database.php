@@ -47,7 +47,7 @@ FOREIGN KEY (member_id) REFERENCES member (member_id), FOREIGN key (interest_id)
 (DEFAULT,'Walking','outdoor'),(DEFAULT,'Climbing','outdoor')
  */
 
-require_once("/home2/ngadomsk/config-dating.php");
+require("/home2/ngadomsk/config-dating.php");
 
 class Database
 {
@@ -86,11 +86,11 @@ class Database
 
 
         if ($_SESSION['premium'] == "premium") {
-            $true = 1;
-            $false = 0;
-            $statement->bindParam(":premium", $true);
+            $var = 1;
+            $statement->bindParam(":premium", $var);
         } else {
-            $statement->bindParam(":premium", $false);
+            $var = 0;
+            $statement->bindParam(":premium", $var);
         }
 
         $statement->execute();
@@ -127,9 +127,20 @@ class Database
         return $result;
     }
 
-    function getMember($member_id)
+    function getMemberInterest($id)
     {
-        return $this->_dbh->lastInsertId();
+        $sql = "SELECT interest FROM interests AS inId INNER JOIN member_interest AS mId ON mId.interest_id = inId.interest_id
+                INNER JOIN member ON member.member_id = mId.member_id  WHERE member.member_id = :id";
+
+        $statement = $this->_dbh->prepare($sql);
+
+        $statement->bindParam(':id', $id);
+
+        $statement->execute();
+
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
     }
 
     function getInterests($interest)
